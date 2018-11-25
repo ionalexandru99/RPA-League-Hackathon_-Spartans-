@@ -1,0 +1,752 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="comments" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dictPozitiv" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dictNegativ" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dictVerbePozitive" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dictVerbeNegative" />
+      <Variable x:TypeArguments="s:String[]" Name="dictSuper" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <Sequence DisplayName="Citire" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="value1" />
+            <Variable x:TypeArguments="sd:DataTable" Name="CommentsModified" />
+          </Sequence.Variables>
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[comments]" Delimitator="Comma" DisplayName="CitesteComm" FilePath="Comments.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IncludeColumnNames="False" />
+          <ui:BuildDataTable DataTable="[CommentsModified]" DisplayName="Build Data Table" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Text&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[comments]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="sd:DataRow" Name="newRow" />
+                      </Sequence.Variables>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_19">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[value1]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[row(0).ToString.ToUpper]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <WriteLine DisplayName="Write Line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[value1]" />
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReplaceDiacritice workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="ReplaceDiacritice.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="text">[value1]</InArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="text2">[value1]</OutArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_23">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataRow">[newRow]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataRow">[CommentsModified.NewRow]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_24">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[newRow.Item(0)]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[value1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[newRow]" DataTable="[CommentsModified]" DisplayName="Add Data Row" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                    </Sequence>
+                    <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[CommentsModified]" Delimitator="Comma" DisplayName="Write CSV" FilePath="Comments2.csv" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
+                  </Sequence>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+          </ui:ForEachRow>
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[comments]" Delimitator="Comma" DisplayName="Citeste Dictionarul Pozitiv" FilePath="Comments2.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_7" />
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dictPozitiv]" Delimitator="Comma" DisplayName="Citeste Dictionarul Pozitiv" FilePath="cuvintePozitive.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" />
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dictNegativ]" Delimitator="Comma" DisplayName="Citeste Dictionarul Negativ" FilePath="cuvinteNeutre.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_3" />
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dictVerbePozitive]" Delimitator="Comma" DisplayName="Citeste Verbe Pozitive" FilePath="listaVerbePozitive.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_5" />
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dictVerbeNegative]" Delimitator="Comma" DisplayName="Citeste Verbe Negative" FilePath="listaVerbeNegative.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_6" />
+        </Sequence>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:String[]">[dictSuper]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:String[]">[Split("GANDESC EXTRAORDINAR INIMAGINABIL NEMAIINTALNIT EXTREM UIMITOR"," ")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="ui:GenericValue" Name="scoreTotal" />
+                    <Variable x:TypeArguments="sd:DataTable" Name="ScoreResult" />
+                  </Sequence.Variables>
+                  <ui:BuildDataTable DataTable="[ScoreResult]" DisplayName="Build Data Table" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Score&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                  <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[comments]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="commentInDict" />
+                        </ActivityAction.Argument>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_23">
+                          <Sequence DisplayName="Sequence1" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="variable1" />
+                              <Variable x:TypeArguments="sd:DataRow" Name="newRow" />
+                              <Variable x:TypeArguments="x:Int32" Default="0" Name="score" />
+                            </Sequence.Variables>
+                            <Sequence DisplayName="Sequence2" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <Sequence DisplayName="comenturi" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="s:String[]" Name="comment" />
+                                  <Variable x:TypeArguments="x:Boolean" Default="False" Name="existaDictPoz" />
+                                  <Variable x:TypeArguments="x:Boolean" Default="False" Name="nextAfterSuper" />
+                                  <Variable x:TypeArguments="ui:GenericValue" Name="counter" />
+                                </Sequence.Variables>
+                                <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="s:String[]">[comment]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="s:String[]">[Split(commentInDict(0).ToString," ")]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="ui:GenericValue">[counter]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="ui:GenericValue">[0]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <While sap2010:WorkflowViewState.IdRef="While_1" Condition="[counter &lt; comment.Length]">
+                                  <Sequence DisplayName="verifica daca apartine intr-un dictionar" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:Boolean" Default="False" Name="existaDictNeg" />
+                                      <Variable x:TypeArguments="x:Boolean" Default="False" Name="existaVerbPoz" />
+                                      <Variable x:TypeArguments="x:Boolean" Default="False" Name="existaVerbNeg" />
+                                      <Variable x:TypeArguments="x:Boolean" Default="False" Name="existaNeutru" />
+                                      <Variable x:TypeArguments="x:Boolean" Default="False" Name="gasitSuper" />
+                                      <Variable x:TypeArguments="x:Boolean" Default="True" Name="notValori" />
+                                      <Variable x:TypeArguments="x:String" Name="word" />
+                                    </Sequence.Variables>
+                                    <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[word]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[comment(counter)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <If Condition="[(nextAfterSuper = true) and (word.ToString &lt;&gt; &quot;DE&quot;)]" sap2010:WorkflowViewState.IdRef="If_7">
+                                      <If.Then>
+                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke change workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="change.xaml">
+                                            <ui:InvokeWorkflowFile.Arguments>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="notValori">[notValori]</InArgument>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="boolValue">True</InArgument>
+                                              <InArgument x:TypeArguments="x:Int32" x:Key="score">[score]</InArgument>
+                                              <OutArgument x:TypeArguments="x:Int32" x:Key="changedScore">[score]</OutArgument>
+                                            </ui:InvokeWorkflowFile.Arguments>
+                                          </ui:InvokeWorkflowFile>
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Boolean">[nextAfterSuper]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </If.Then>
+                                    </If>
+                                    <If Condition="[word.ToString = &quot;SUPER&quot;]" sap2010:WorkflowViewState.IdRef="If_8">
+                                      <If.Then>
+                                        <Assign sap2010:WorkflowViewState.IdRef="Assign_10">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Int32">[score]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Int32">[score + 1]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </If.Then>
+                                    </If>
+                                    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[dictSuper]">
+                                      <ui:ForEach.Body>
+                                        <ActivityAction x:TypeArguments="x:Object">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="x:Object" Name="superVar" />
+                                          </ActivityAction.Argument>
+                                          <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="gasire superlativ in comentarii" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="camparareString.xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <InArgument x:TypeArguments="x:String" x:Key="sir">[word.ToString]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="sir2">[superVar.ToString]</InArgument>
+                                                <OutArgument x:TypeArguments="x:Boolean" x:Key="valabil">[gasitSuper]</OutArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                            </ui:InvokeWorkflowFile>
+                                            <If Condition="[gasitSuper = true]" sap2010:WorkflowViewState.IdRef="If_9">
+                                              <If.Then>
+                                                <Assign sap2010:WorkflowViewState.IdRef="Assign_11">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Boolean">[nextAfterSuper]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </If.Then>
+                                            </If>
+                                            <Assign sap2010:WorkflowViewState.IdRef="Assign_12">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="ui:GenericValue">[counter]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="ui:GenericValue">[counter + 1]</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                          </Sequence>
+                                        </ActivityAction>
+                                      </ui:ForEach.Body>
+                                    </ui:ForEach>
+                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="verificareDictPozitiv" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="verificareDict.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="word">[word.ToString]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="dict">[dictPozitiv]</InArgument>
+                                        <OutArgument x:TypeArguments="x:Boolean" x:Key="dictGasit">[existaDictPoz]</OutArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                    </ui:InvokeWorkflowFile>
+                                    <If Condition="[existaDictPoz = true]" sap2010:WorkflowViewState.IdRef="If_10">
+                                      <If.Then>
+                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke change workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="change.xaml">
+                                            <ui:InvokeWorkflowFile.Arguments>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="notValori">[notValori]</InArgument>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="boolValue">True</InArgument>
+                                              <InArgument x:TypeArguments="x:Int32" x:Key="score">[score]</InArgument>
+                                              <OutArgument x:TypeArguments="x:Int32" x:Key="changedScore">[score]</OutArgument>
+                                            </ui:InvokeWorkflowFile.Arguments>
+                                          </ui:InvokeWorkflowFile>
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_13">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="ui:GenericValue">[counter]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="ui:GenericValue">[counter + 1]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </If.Then>
+                                    </If>
+                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="verificareDictNeg" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="verificareDict.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="word">[word.ToString]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="dict">[dictNegativ]</InArgument>
+                                        <OutArgument x:TypeArguments="x:Boolean" x:Key="dictGasit">[existaDictNeg]</OutArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                    </ui:InvokeWorkflowFile>
+                                    <If Condition="[existaDictNeg = true]" sap2010:WorkflowViewState.IdRef="If_11">
+                                      <If.Then>
+                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke change workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="change.xaml">
+                                            <ui:InvokeWorkflowFile.Arguments>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="notValori">[notValori]</InArgument>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="boolValue">False</InArgument>
+                                              <InArgument x:TypeArguments="x:Int32" x:Key="score">[score]</InArgument>
+                                              <OutArgument x:TypeArguments="x:Int32" x:Key="changedScore">[score]</OutArgument>
+                                            </ui:InvokeWorkflowFile.Arguments>
+                                          </ui:InvokeWorkflowFile>
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_14">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="ui:GenericValue">[counter]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="ui:GenericValue">[counter + 1]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </If.Then>
+                                    </If>
+                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="verificareDictVerbePoz" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="verificareDict.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="word">[word.ToString]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="dict">[dictVerbePozitive]</InArgument>
+                                        <OutArgument x:TypeArguments="x:Boolean" x:Key="dictGasit">[existaVerbPoz]</OutArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                    </ui:InvokeWorkflowFile>
+                                    <If Condition="[existaVerbPoz = true]" sap2010:WorkflowViewState.IdRef="If_13">
+                                      <If.Then>
+                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                          <If Condition="[existaVerbPoz = true]" sap2010:WorkflowViewState.IdRef="If_12">
+                                            <If.Then>
+                                              <Assign sap2010:WorkflowViewState.IdRef="Assign_15">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Boolean">[notValori]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </If.Then>
+                                          </If>
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_16">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="ui:GenericValue">[counter]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="ui:GenericValue">[counter + 1]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </If.Then>
+                                    </If>
+                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="verificareDictVerbeNeg" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="verificareDict.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="word">[word.ToString]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="dict">[dictVerbeNegative]</InArgument>
+                                        <OutArgument x:TypeArguments="x:Boolean" x:Key="dictGasit">[existaVerbNeg]</OutArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                    </ui:InvokeWorkflowFile>
+                                    <If Condition="[existaVerbNeg = true]" sap2010:WorkflowViewState.IdRef="If_14">
+                                      <If.Then>
+                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_17">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Boolean">[notValori]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_18">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="ui:GenericValue">[counter]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="ui:GenericValue">[counter +2]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_21">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Int32">[score]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Int32">[score-1]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </If.Then>
+                                    </If>
+                                  </Sequence>
+                                </While>
+                              </Sequence>
+                            </Sequence>
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_26">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="sd:DataRow">[newRow]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="sd:DataRow">[ScoreResult.NewRow()]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <If Condition="[score &gt; 0]" sap2010:WorkflowViewState.IdRef="If_16">
+                              <If.Then>
+                                <Assign sap2010:WorkflowViewState.IdRef="Assign_27">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Object">[newRow.Item(0)]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Object">["Happy"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <If Condition="[score &lt; 0]" sap2010:WorkflowViewState.IdRef="If_15">
+                                  <If.Then>
+                                    <Assign sap2010:WorkflowViewState.IdRef="Assign_28">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Object">[newRow.Item(0)]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Object">["Unhappy"]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Assign sap2010:WorkflowViewState.IdRef="Assign_29">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Object">[newRow.Item(0)]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Object">["Neutral"]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </If.Else>
+                                </If>
+                              </If.Else>
+                            </If>
+                            <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[newRow]" DataTable="[ScoreResult]" DisplayName="Add Data Row" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                          </Sequence>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                  </ui:ForEachRow>
+                  <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[ScoreResult]" Delimitator="Comma" DisplayName="Write CSV" FilePath="ScoreResult.csv" sap2010:WorkflowViewState.IdRef="WriteCsvFile_2" />
+                </Sequence>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ReadCsvFile_1" sap:VirtualizedContainerService.HintSize="412,60" />
+      <sap2010:ViewStateData Id="BuildDataTable_1" sap:VirtualizedContainerService.HintSize="412,60" />
+      <sap2010:ViewStateData Id="Assign_19" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="314.4,62.4" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_16" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="Assign_23" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="Assign_24" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="AddDataRow_1" sap:VirtualizedContainerService.HintSize="314.4,22.4" />
+      <sap2010:ViewStateData Id="Sequence_18" sap:VirtualizedContainerService.HintSize="336.8,677.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteCsvFile_1" sap:VirtualizedContainerService.HintSize="336.8,88" />
+      <sap2010:ViewStateData Id="Sequence_19" sap:VirtualizedContainerService.HintSize="359.2,930.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="381.6,1055.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_3" sap:VirtualizedContainerService.HintSize="412,1204" />
+      <sap2010:ViewStateData Id="ReadCsvFile_7" sap:VirtualizedContainerService.HintSize="412,60" />
+      <sap2010:ViewStateData Id="ReadCsvFile_2" sap:VirtualizedContainerService.HintSize="412,60" />
+      <sap2010:ViewStateData Id="ReadCsvFile_3" sap:VirtualizedContainerService.HintSize="412,60" />
+      <sap2010:ViewStateData Id="ReadCsvFile_5" sap:VirtualizedContainerService.HintSize="412,60" />
+      <sap2010:ViewStateData Id="ReadCsvFile_6" sap:VirtualizedContainerService.HintSize="412,60" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="243.2,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BuildDataTable_2" sap:VirtualizedContainerService.HintSize="854.4,60" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="659.2,60" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="659.2,60" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="611.2,60" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_8" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="336.8,312.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_7" sap:VirtualizedContainerService.HintSize="611.2,462.4" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="If_8" sap:VirtualizedContainerService.HintSize="611.2,209.6" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_9" sap:VirtualizedContainerService.HintSize="464,88">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="If_9" sap:VirtualizedContainerService.HintSize="464,209.6" />
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="464,60" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="486.4,562.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_4" sap:VirtualizedContainerService.HintSize="611.2,696.8" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_10" sap:VirtualizedContainerService.HintSize="611.2,88">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_11" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="336.8,312.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_10" sap:VirtualizedContainerService.HintSize="611.2,462.4" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_12" sap:VirtualizedContainerService.HintSize="611.2,88">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_13" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="314.4,60" />
+      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="336.8,312.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_11" sap:VirtualizedContainerService.HintSize="611.2,462.4" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_14" sap:VirtualizedContainerService.HintSize="611.2,88">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_15" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="If_12" sap:VirtualizedContainerService.HintSize="464,209.6" />
+      <sap2010:ViewStateData Id="Assign_16" sap:VirtualizedContainerService.HintSize="464,60" />
+      <sap2010:ViewStateData Id="Sequence_15" sap:VirtualizedContainerService.HintSize="486.4,434.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_13" sap:VirtualizedContainerService.HintSize="611.2,584" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_15" sap:VirtualizedContainerService.HintSize="611.2,88">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_17" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="Assign_18" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="Assign_21" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="Sequence_16" sap:VirtualizedContainerService.HintSize="265.6,384.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_14" sap:VirtualizedContainerService.HintSize="611.2,534.4" />
+      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="633.6,4388.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_1" sap:VirtualizedContainerService.HintSize="659.2,4548" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="681.6,4872.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="779.2,4997.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_26" sap:VirtualizedContainerService.HintSize="779.2,60" />
+      <sap2010:ViewStateData Id="Assign_27" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="Assign_28" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="Assign_29" sap:VirtualizedContainerService.HintSize="243.2,60" />
+      <sap2010:ViewStateData Id="If_15" sap:VirtualizedContainerService.HintSize="511.2,209.6" />
+      <sap2010:ViewStateData Id="If_16" sap:VirtualizedContainerService.HintSize="779.2,359.2" />
+      <sap2010:ViewStateData Id="AddDataRow_2" sap:VirtualizedContainerService.HintSize="779.2,22.4" />
+      <sap2010:ViewStateData Id="Sequence_22" sap:VirtualizedContainerService.HintSize="801.6,5684">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_23" sap:VirtualizedContainerService.HintSize="824,5808.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_2" sap:VirtualizedContainerService.HintSize="854.4,5957.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteCsvFile_2" sap:VirtualizedContainerService.HintSize="854.4,88" />
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="876.8,6310.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">539.895,300</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">518.895,190</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">639.895,250 639.895,300</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">530,94.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">630,147.3 630,177.3 640.495,177.3 640.495,190</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="1256,636.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">600,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">630,77.5 630,94.5</av:PointCollection>
+            <x:Double x:Key="Width">1242</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="1296,716.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+            <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
