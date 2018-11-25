@@ -1,0 +1,24 @@
+Pasul 1:Putem adauga in dictionar cuvinte noi direct in fisierul .csv ,fara a interactiona cu fisierul xaml.
+Pasul 2:Citim de la tastatura prin intermediul unui Input Dialog numarul de postari care se vor analizate.
+Pasul 3:Robotul deschide browserul si se contecteaza la facebook,deasemenea verifica daca utilizatorul este deja logat,
+in caz contrar logandu-se cu un cont existent,default.
+Pasul 4:Robotul analizeaza pagina principala de facebook,cauta bara de search si acceseaza pagina "https://www.facebook.com/DaciaRomania/"
+Pasul 5:Intra pe pagina Dacia Romania,foloseste un input hotkey pentru a da un page down,apoi se analizeaza primul post de pe pagina,deasemenea apasand pe butonul de afisare a tuturor comentariilor.
+Pasul 6:Retine toate comentariile intr-un tabel de tip csv,pe care il foloseste apoi in urmatoarea secventa de cod,unde elimina diacriticele si face toate caracterele litere mari.
+Pasul 7:Adauga dictionarele create inainte de inceperea programului si verifica daca fiecare element din csv-ul initial se afla intr-unul dintre aceste dictionare
+Pasul 8:Se aleg doar cuvintele cheie:verbe si atribute de mai multe tipuri:pozitive si negative.
+Pasul 9:Se sterge restul de cuvinte si se foloseste un algoritm pentru a stabili tipul comentariului:pozitiv,negativ sau neutru.
+Pasul 10:Se calculeaza in functie de verbe tipul atributelor(poz/neg) si scorul fiecarui comentariu.
+Pasul 11:Se creeaza un output de tip csv,in care retinem scorul comentariilor si pe care il trimitem prin mail la o adresa stabilita anterior executarii programului.
+
+Plusuri:      Folosim letter correction pentru o precizie mai mare a algoritmului(0-3 carac => 0 greseli acceptate;4-6 carac => o greseala acceptata;7+ greseli =>2 greseli acceptate)
+	Folosim 4 dictionare pentru o gama variata de cuvinte cheie(pozitive,negative,verbe pozitive,negative;in cadrul verbelor negative sunt incluse si negatii)
+	Avem o verificare in paralel pentru superlative
+	Avem o metoda de apreciere eficienta
+	Extrage comentariile intr-un mod rapid si eficient
+	Logare automata pe facebook in cazul in care nu este deja un utilizator conectat
+	Poate extrage toate comentariile de la toate postarile cerute de pe o singura pagina,fara a intra in alte pagini
+	Rezultate 100% accurate din punctul de vedere al extragerii comentariilor
+
+Negative:   Uneori este necesar un update manual pentru anumiti selectori
+	Codul pentru acordarea unui "calificativ" cuvintelor si comentariilor este lent,neoptimizat si dezordonat din punct de vedere al structurii.
